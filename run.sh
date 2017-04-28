@@ -30,4 +30,4 @@ else
 fi
 
 #sysctl -w vm.nr_hugepages=8 NOT possible in docker or with privileged container
-./minerd -a $ALGORITHM -o $URL -u $USERNAME -p $PASSWORD -t $THREADS
+nice -n $PRIORITY ./minerd -a $ALGORITHM -o $URL -u $USERNAME -p $PASSWORD -t $THREADS
