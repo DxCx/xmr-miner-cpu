@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:14.04
 MAINTAINER Reimund Klain <reimund.klain@condevtec.de>
 
 RUN apt-get update && apt-get install -y \
@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install -y \
 ENV USERNAME=NOTSET
 ENV PASSWORD=x
 ENV URL="stratum+tcp://xmr.pool.minergate.com:45560"
-ENV ALGO=cryptonight
+ENV ALGORITHM=cryptonight
 
-ADD run.sh /run.sh
-RUN chmod 755 /run.sh
-CMD /run.sh
+ADD run.sh /usr/local/bin/run.sh
+RUN chmod 755 /usr/local/bin/run.sh
+CMD /usr/local/bin/run.sh
