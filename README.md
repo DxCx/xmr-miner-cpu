@@ -4,12 +4,12 @@ Miner will be compiled at start time to get best out of your CPU arch.
 
 # Environment Variables with defaults
 
-USERNAME=(mandatory)
-PASSWORD=x (default: x)
-ALGORITHM=cryptonight (currently only supporte one by Wolf's CPU miner)
-URL=stratum+tcp://xmr.pool.minergate.com:45560 (default: Minergate)
-PRIORITY=19 (defaule: nice value)
-THREADS= (default: calculated by available CPUs or (L3 cache * sockets / 2) Note: smaller value wins
+* USERNAME=(mandatory)
+* PASSWORD=x (default: x)
+* ALGORITHM=cryptonight (currently only supporte one by Wolf's CPU miner)
+* URL=stratum+tcp://xmr.pool.minergate.com:45560 (default: Minergate)
+* PRIORITY=19 (defaule: nice value)
+* THREADS= (default: calculated by available CPUs or (L3 cache * sockets / 2) Note: smaller value wins
 
 # Pools
 The container supports different pools by environment variable URL
