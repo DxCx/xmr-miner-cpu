@@ -23,7 +23,7 @@ echo "Found $NUM_CPUS CPUs"
 if [ -z ${THREADS+x} ]; then
   THREADS=$(($L3CACHE_MB*$NUM_SOCKETS/2))
   echo "THREADS based on (L3 MB * sockets / 2 MB) calculation -- $L3CACHE_MB MB * $NUM_SOCKETS / 2 MB = $THREADS"
-  THREADS=$(($THREADS<$NUM_CPUS?$THREADS:$NUM_CPUS))
+  THREADS=$(($THREADS<$NUM_CPUS?$THREADS:$NUM_CPUS+1))
   echo "THREADS is set it to $THREADS"
 else
   echo "THREADS is set to $THREADS"
