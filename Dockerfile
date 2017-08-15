@@ -9,8 +9,7 @@ RUN apt-get update && apt-get install -y \
     libjansson-dev \
     autoconf \
     libcurl4-gnutls-dev \
-    git \
-  && rm -rf /var/lib/apt/lists/*
+    git && apt-get clean ; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV USERNAME=NOTSET
 ENV PASSWORD=x
