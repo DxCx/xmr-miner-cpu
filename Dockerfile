@@ -1,15 +1,25 @@
-FROM ubuntu:14.04
-MAINTAINER Reimund Klain <reimund.klain@condevtec.de>
+FROM alpine:latest
 
-RUN apt-get update && apt-get install -y \
-    libcurl3 \
-    build-essential \
-    automake \
-    autotools-dev \
-    libjansson-dev \
-    autoconf \
-    libcurl4-gnutls-dev \
-    git && apt-get clean ; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN set -ex \
+	&& apk add --no-cache --update \
+		util-linux \
+		libcurl \
+		coreutils \
+	&& apk add --virtual build-dependencies --no-cache \
+		alpine-sdk \
+		curl-dev \
+		automake \
+		jansson \
+		autoconf \
+		git \
+    && git clone https://github.com/wolf9466/cpuminer-multi \
+	&& cd cpuminer-multi/ \
+	&& autoreconf -fi \
+    && CFLAGS="-march=native" ./configure \
+	&& make \
+	&& make install \
+    && apk del build-dependencies \
+    && rm -rf /tmp/* /var/tmp/*
 
 ENV USERNAME=NOTSET
 ENV PASSWORD=x
@@ -19,4 +29,4 @@ ENV PRIORITY=19
 
 ADD run.sh /usr/local/bin/run.sh
 RUN chmod 755 /usr/local/bin/run.sh
-CMD /usr/local/bin/run.sh
+ENTRYPOINT ["/bin/sh", "/usr/local/bin/run.sh"]

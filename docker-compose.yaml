@@ -1,0 +1,4 @@
+xmr-miner:
+  build: .
+  environment:
+    - USERNAME=
